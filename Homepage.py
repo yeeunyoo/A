@@ -55,14 +55,11 @@ import pyodbc
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
-server = '10.1.3.25'
-database = 'KIRA'
-username = 'kiradba'
-password = 'Kiss!234!'
+server = st.secrets['server']
+database = st.secrets['database']
+username = st.secrets['username']
+password = st.secrets['password']
 connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
-conn = engine.connect()
-with engine.connect() as conn:
-    df = pd.read_sql('''SELECT * from [ivy.mm.dim.sales_master]''')
-
+df = pd.read_sql('''SELECT * from [ivy.mm.dim.sales_master]''', con = engine)
