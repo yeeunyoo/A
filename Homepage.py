@@ -59,10 +59,10 @@ import pyodbc
 def init_connection():
     connection = pyodbc.connect(
     driver = "ODBC Driver 17 for SQL Server",
-    server = os.environ[st.secrets["server"]],
-    database = os.environ[st.secrets['database']], 
-    uid = os.environ[st.secrets['username']],
-    pwd = os.environ[st.secrets['password']])
+    server = st.secrets['server'],
+    database = st.secrets['database'], 
+    uid = st.secrets['username'],
+    pwd = st.secrets['password'])
     return connection
 
 conn = init_connection()
