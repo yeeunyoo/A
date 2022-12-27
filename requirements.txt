@@ -15,4 +15,3 @@ streamlit_multipage==0.0.18
 streamlit_permalink==0.3.0
 streamlit_ws_localstorage==1.0.0
 websockets==10.4
-~treamlit==1.16.0
