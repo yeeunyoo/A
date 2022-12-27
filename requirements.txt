@@ -11,4 +11,4 @@ streamlit_autorefresh==0.0.1
 streamlit_extras==0.2.4
 streamlit_multipage==0.0.18
 streamlit_permalink==0.3.0
-websockets==10.4
+
