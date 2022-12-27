@@ -27,7 +27,7 @@ beta1, beta2 = st.columns(2)
 with beta1:
     IVY = st.button("IVY")
     if IVY:
-        switch_page('IVY_1')
+        switch_page('/app/a/IVY_1.py')
 with beta2:
     RED = st.button('RED')
     if RED:
