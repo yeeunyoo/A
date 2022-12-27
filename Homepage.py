@@ -63,16 +63,6 @@ connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DA
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
 conn = engine.connect()
-# Perform query.
-# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
-@st.experimental_memo(ttl=600)
-def run_query(query):
-    with engine.connect() as conn:
-        conn.execute(query)
-        return conn.fetchall()
+with engine.connect() as conn:
+    df = pd.read_sql('''SELECT * from [ivy.mm.dim.sales_master]''')
 
-rows = run_query("SELECT * from [ivy.mm.dim.sales_master];")
-
-# Print results.
-for row in rows:
-    st.write(f"{row[0]} has a :{row[1]}:")
