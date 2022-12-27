@@ -56,16 +56,13 @@ import pyodbc
 # Uses st.experimental_singleton to only run once.
 @st.experimental_singleton
 def init_connection():
-    return pyodbc.connect(
-        "DRIVER={ODBC Driver 17 for SQL Server};SERVER="
-        + st.secrets["server"]
-        + ";DATABASE="
-        + st.secrets["database"]
-        + ";UID="
-        + st.secrets["username"]
-        + ";PWD="
-        + st.secrets["password"]
-    )
+    connection = pyodbc.connect(
+    driver = "ODBC Driver 17 for SQL Server",
+    server = os.environ[st.secrets["server"]],
+    database = os.environ[st.secrets['database']], 
+    uid = os.environ[st.secrets['username']],
+    pwd = os.environ[st.secrets['password']])
+    return connection
 
 conn = init_connection()
 # Perform query.
