@@ -2,9 +2,7 @@ import streamlit as st
 from streamlit_multipage import MultiPage
 import streamlit.components.v1 as components
 from streamlit_extras.switch_page_button import switch_page
-from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx
-import websockets
-import asyncio
+
 import pandas as pd
 import numpy as np
 import sqlalchemy as sqlalchemy
@@ -37,7 +35,7 @@ import smtplib
 from datetime import date
 # %% Email Related module
 import os
-import win32com.client as win32
+
 import streamlit_permalink as stp
 import uuid
 from st_clickable_images import clickable_images
