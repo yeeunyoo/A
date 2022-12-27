@@ -7,6 +7,10 @@ from streamlit.web.server import Server
 from sqlalchemy.engine import URL
 from sqlalchemy import create_engine
 import os
+import FINAL
+import IVY_1
+import IVY_2
+import IVY_3
 st.set_page_config(
 page_title="Account Change Request",
 page_icon="🔎",
@@ -20,7 +24,10 @@ st.markdown('#')
 st.markdown("""<h1 style="font-size:50px; text-align: center; color:black; margin:10px;">Sales Account Change Request Form</h1>""", unsafe_allow_html=True)
 for i in range(1, 7):
     st.markdown('#')
-
+PAGES = {
+    "IVY_1":IVY_1,
+    "IVY_2 :IVY_2
+}
 
 
 beta1, beta2 = st.columns(2)
