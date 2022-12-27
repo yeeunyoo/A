@@ -64,7 +64,7 @@ connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_st
 engine = create_engine(connection_url)
 @st.experimental_memo(ttl=600)
 def run_query(query):
-    with engine.connect() as conn:
-        conn.execute(query)
-        return conn.fetchall()
+    with engine.connect() as con:
+        return con.execute(query)
+        
 rows = run_query("select * from [ivy.mm.dim.sales_master]")
