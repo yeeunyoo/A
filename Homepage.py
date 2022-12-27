@@ -62,9 +62,4 @@ password = st.secrets['password']
 connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
-@st.experimental_memo(ttl=600)
-def run_query(query):
-    with engine.connect() as con:
-        return con.execute(query)
-        
-rows = run_query("select * from [ivy.mm.dim.sales_master]")
+
