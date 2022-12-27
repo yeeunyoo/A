@@ -67,4 +67,4 @@ def run_query(query):
     with engine.connect() as conn:
         conn.execute(query)
         return conn.fetchall()
-rows = run_query('''SELECT * from [ivy.mm.dim.sales_master]''')
+rows = run_query("select * from [ivy.mm.dim.sales_master]")
