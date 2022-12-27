@@ -56,11 +56,11 @@ import pyodbc
 def init_connection():
     return pyodbc.connect(
         "DRIVER={ODBC Driver 17 for SQL Server};SERVER="
-        + st.secrets["10.1.3.25"]
+        + st.secrets["server"]
         + ";DATABASE="
-        + st.secrets["KIRA"]
+        + st.secrets["database"]
         + ";UID="
-        + st.secrets["kiradba"]
+        + st.secrets["username"]
         + ";PWD="
         + st.secrets["Kiss!234!"]
     )
