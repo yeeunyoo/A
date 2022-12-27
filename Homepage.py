@@ -62,7 +62,7 @@ def init_connection():
         + ";UID="
         + st.secrets["username"]
         + ";PWD="
-        + st.secrets["Kiss!234!"]
+        + st.secrets["password"]
     )
 
 conn = init_connection()
