@@ -4,8 +4,9 @@ openpyxl==3.0.10
 pandas==1.5.2
 pyodbc==4.0.35
 python-dotenv==0.21.0
-
+streamlit_extras==0.2.4
+streamlit_multipage==0.0.18
 SQLAlchemy==1.4.45
 streamlit_autorefresh==0.0.1
-
-
+smartsheet_python_sdk==3.0.0
+streamlit_permalink==0.3.0
