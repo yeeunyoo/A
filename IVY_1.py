@@ -53,7 +53,6 @@ connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DA
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
 
-result = engine.execute(“select * from tablename”)
 # %% SalesTeam option 
 df = engine.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asc")
 
