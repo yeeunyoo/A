@@ -11,7 +11,6 @@ from sqlalchemy.engine import URL
 from streamlit_autorefresh import st_autorefresh
 from sqlalchemy.sql import text
 from sqlalchemy import *
-import sqlalchemy as sal
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from st_aggrid import AgGrid
