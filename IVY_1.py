@@ -50,7 +50,7 @@ server = st.secrets['server']
 database = st.secrets['database']
 username = st.secrets['username']
 password = st.secrets['password']
-connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",server="10.1.3.25",database="KIRA",uid="kiradba",pwd="Kiss!234!",sslmode=True,)
+connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",server="10.1.3.25",database=os.environ["KIRA"],uid=os.environ["kiradba"],pwd=os.environ["Kiss!234!"],sslmode=True,)
 cursor = connection.cursor()
 cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
 rows = cursor.fetchall()
