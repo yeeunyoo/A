@@ -23,8 +23,7 @@ st.markdown("""<h1 style="font-size:50px; text-align: center; color:black; margi
 for i in range(1, 7):
     st.markdown('#')
 PAGES = {
-    "IVY_1":IVY_1,
-    "IVY_2" :IVY_2
+    "IVY_1":IVY_1
 }
 
 
