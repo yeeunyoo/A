@@ -46,18 +46,18 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-engine = sal.create_engine('mssql+pyodbc://10.1.3.25/KIRA?driver=SQL Server?Trusted_Connection=yes')
-sal.create_engine('dialect+driver://kiradba:Kiss!234!@host:1433/database')
-conn = engine.connect()
-conn.execute("SELECT * distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending;")
-@st.experimental_memo(ttl=600)
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-        return cur.fetchall()
+@st.cache
+def connect_db():
 
-
-
+   con=pyodbc.connect(
+   driver = 'ODBC DRIVER 17 FOR SQL SERVER',
+   Server = '10.1.3.25',
+   DATABASE='KIRA',
+   UID = 'kiradba',
+   PWD ='Kiss!234!',
+      )
+cursor = con.cursor()
+df = pd.read_sql_query('select * [ivy.mm.dim.sales_master];',con)
 
 # %% SalesTeam option 
 
