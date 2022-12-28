@@ -46,17 +46,16 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-
+import pytds
+with pytds.connect('10.1.3.25', 'KIRA', 'kiradba', 'Kiss!234!') as conn:
+    with conn.cursor() as cur:
+        cur.execute("select * from [ivy.mm.dim.sales_master]")
+        df=cur.fetchall()
 server = st.secrets['server']
 database = st.secrets['database']
 username = st.secrets['username']
 password = st.secrets['password']
-e = create_engine("mssql+pyodbc://kiradba:Kiss!234!@10.1.3.25:1433/test?driver=ODBC+Driver+17+for+SQL+Server&Connect+Timeout=30")
-print(e.dialect.create_connect_args(e.url))
-conn = e.connect()
-with e.connect() as connection:
-    connection.execute("select * from [ivy.mm.dim.sales_master]")
-    df=connection.commit()  # commits "some statement"
+
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
 with colE:
