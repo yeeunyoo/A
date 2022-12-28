@@ -46,16 +46,14 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-@st.cache
-def connect_db():
 
-   con=pyodbc.connect(
-   driver = 'ODBC DRIVER 17 FOR SQL SERVER',
-   Server = '10.1.3.25',
-   DATABASE='KIRA',
-   UID = 'kiradba',
-   PWD ='Kiss!234!',
-      )
+con=pyodbc.connect(
+driver = 'ODBC DRIVER 17 FOR SQL SERVER',
+Server = '10.1.3.25',
+DATABASE='KIRA',
+UID = 'kiradba',
+PWD ='Kiss!234!',
+)
 cursor = con.cursor()
 df = pd.read_sql_query('select * [ivy.mm.dim.sales_master];',con)
 
