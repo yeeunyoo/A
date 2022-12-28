@@ -50,11 +50,11 @@ server = st.secrets['server']
 database = st.secrets['database']
 username = st.secrets['username']
 password = st.secrets['password']
-connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
-connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
-engine = create_engine(connection_url)
-connection = engine.raw_connection()
-df = pd.read_sql('''select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending''',engine)
+connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",server="10.1.3.25",database="KIRA",uid="kiradba",pwd="Kiss!234!",sslmode=True,)
+cursor = connection.cursor()
+cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
+rows = cursor.fetchall()
+
 
 
 
