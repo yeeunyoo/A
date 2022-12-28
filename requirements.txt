@@ -29,6 +29,6 @@ streamlit_autorefresh==0.0.1
 
 streamlit_multipage==0.0.18
 
-
+streamlit_extras==0.2.4
 toml==0.10.2
 
