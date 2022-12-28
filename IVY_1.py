@@ -45,14 +45,7 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-server = '10.1.3.25' 
-database = 'KIRA' 
-username = 'kiradba' 
-password = 'Kiss!234!' 
-connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
-connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
-engine = create_engine(connection_url)
-print("Connection Established:")
+
 # %% SalesTeam option 
 df=pd.read_sql('''
 select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]]
