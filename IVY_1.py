@@ -47,14 +47,13 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-conn = pyodbc.connect(
-r'DRIVER={ODBC Driver 17 for SQL Server};'
-r'SERVER=10.1.3.25;'
-r'DATABASE=KIRA;'
-r'UID=kiradba;'
-r'PWD=Kiss!234!'
-)
-
+server = st.secrets['server']
+database = st.secrets['database']
+username = st.secrets['username']
+password = st.secrets['password']
+connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
+connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+engine = create_engine(connection_url)
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
