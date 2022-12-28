@@ -9,7 +9,8 @@ dl==0.1.0
 docutils==0.19
 HTMLParser==0.0.2
 
-
+pillow
+streamlit-aggrid
 numpy==1.23.5
 openpyxl==3.0.10
 pandas==1.5.2
