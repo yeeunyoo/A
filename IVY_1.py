@@ -53,7 +53,9 @@ password = st.secrets['password']
 connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
-engine.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
+connection = engine.connect(close_with_result=True)
+df = pd.read_sql('''select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending''', connection = engine)
+
 
 
 # %% SalesTeam option 
