@@ -11,13 +11,13 @@ from sqlalchemy.engine import URL
 from streamlit_autorefresh import st_autorefresh
 from sqlalchemy.sql import text
 from sqlalchemy import *
-import sqlite3
+
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from st_aggrid import AgGrid
 from st_aggrid import GridOptionsBuilder,GridUpdateMode, DataReturnMode, JsCode
 import streamlit.components.v1 as components
-from streamlit.web.server import Server
+
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 import smtplib
@@ -212,40 +212,9 @@ with colA2:
     final = df[['From','To','Account Number','Account Name','State','Start_From','End_date']]
 # %%
 # Save File in Smartsheet Page 
-FILE = final.to_csv('TEST FILE.csv')
-import smartsheet
-def Attach_To_Smartsheet():
-    smartsheet_client = smartsheet.Smartsheet("rjjjwNgTfxwAjE5R5YcSKu5OocAMyLAUJa2av")
-    sheet = smartsheet_client.Sheets.get_sheet(1785827530434436)
-    newRow = smartsheet_client.models.Row()
-    newCell = smartsheet_client.models.Cell()
-    today = date.today()
-    newRow.cells.append({'column_id':3762980888307588, 'object_value':today})
-    for row in sheet.rows:
-        thisRow = row.id
-    smartsheet_client.Attachments.attach_file_to_row(1785827530434436, thisRow, ('TEST.xlsx',open(FILE, 'rb'),'application/vnd.ms_excel'))
 
 # %%
     
 # Submit button Form
 
-with st.form('form 1'):
-    st.write("Once you click submit button, you can't go back.")
-    button1 = st.form_submit_button('Submit')
-    if button1:
-        # Email
-        st.write(final)
-     #######Here to use Attach def
-        st.success('Your Request Has Been Submitted! ')
 
-with st.form('form 2'):
-    st.write('Do You Have More Requests?')
-    buttonY = st.form_submit_button('Yes')
-    if buttonY:
-        st.session_state.count+=1
-        switch_page('IVY_2')
-        
-    buttonN = st.form_submit_button('NO')
-    if buttonN:
-        switch_page('FINAL')
-# %%
