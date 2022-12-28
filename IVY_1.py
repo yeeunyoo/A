@@ -51,7 +51,7 @@ server = st.secrets['server']
 database = st.secrets['database']
 username = st.secrets['username']
 password = st.secrets['password']
-e = create_engine("mssql+pyodbc://kiradba:Kiss!234!@10.1.3.25:1433/test?driver=ODBC+Driver+13+for+SQL+Server&Connect+Timeout=30")
+e = create_engine("mssql+pyodbc://kiradba:Kiss!234!@10.1.3.25:1433/test?driver=ODBC+Driver+17+for+SQL+Server&Connect+Timeout=30")
 print(e.dialect.create_connect_args(e.url))
 conn = e.connect()
 with e.connect() as connection:
