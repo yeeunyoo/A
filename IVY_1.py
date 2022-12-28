@@ -49,7 +49,7 @@ st.write("if you have any question, please contact IVY SOM team")
 
 user = st.secrets['username']
 pw = st.secrets['password']
-host = 'DWPRO'
+host = "HQ4601YEAEUNYOO"
 db = st.secrets['database']
 engine = create_engine("mysql+pymysql://user:pw@host/db", pool_pre_ping=True)
 conn = engine.connect()
