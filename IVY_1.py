@@ -53,12 +53,10 @@ connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DA
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
 
-
+result = engine.execute(“select * from tablename”)
 # %% SalesTeam option 
-df=pd.read_sql('''
- select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]]
- order by salesteam_text asc
- ''', con = engine)
+df = engine.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asc")
+
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
