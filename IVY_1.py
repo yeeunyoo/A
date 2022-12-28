@@ -51,7 +51,7 @@ user = st.secrets['username']
 pw = st.secrets['password']
 
 db = st.secrets['database']
-engine = create_engine("mysql+pymysql://kiradba:Kiss!234!@10.1.121.34/KIRA", pool_pre_ping=True)
+engine = create_engine("mysql+pymysql://kiradba:Kiss!234!@169.254.146.68/KIRA", pool_pre_ping=True)
 conn = engine.connect()
 conn.execute("SELECT * distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending;")
 @st.experimental_memo(ttl=600)
