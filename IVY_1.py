@@ -56,7 +56,7 @@ engine = create_engine(connection_url)
 conn = engine.connect()
 # %% SalesTeam option 
 df = engine.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asc")
-
+engine.close()
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
