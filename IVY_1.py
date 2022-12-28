@@ -50,7 +50,7 @@ st.write("if you have any question, please contact IVY SOM team")
 df=pd.read_sql('''
 select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]]
 order by salesteam_text asc
-''')
+''', con)
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
