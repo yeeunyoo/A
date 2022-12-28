@@ -46,16 +46,19 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-server = st.secrets['server']
-database = st.secrets['database']
-username = st.secrets['username']
-password = st.secrets['password']
-connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
-connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
-engine = create_engine(connection_url)
-sql_query = pd.read_sql_query('''select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asce''', con=engine)
-# %% SalesTeam option 
 
+# %% SalesTeam option 
+connection = pyodbc.connect(
+    driver="ODBC Driver 17 for SQL Server",
+    server=st.secrets['server'],
+    database=st.secrets['database'],
+    uid=st.secrets['username'],
+    pwd=st.secrets['password'],
+    sslmode=True,
+)
+cursor = connection.cursor()
+cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asce")
+rows = cursor.fetchall()
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
