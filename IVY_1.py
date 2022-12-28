@@ -47,13 +47,7 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-con=pyodbc.connect(
-driver = 'ODBC DRIVER 17 FOR SQL SERVER',
-Server = '10.1.3.25',
-DATABASE='KIRA',
-UID = 'kiradba',
-PWD ='Kiss!234!',
-)
+con=pyodbc.connect(driver = 'ODBC DRIVER 17 FOR SQL SERVER',Server = '10.1.3.25',DATABASE='KIRA',UID = 'kiradba',PWD ='Kiss!234!',)
 cursor = con.cursor()
 df = pd.read_sql_query('select * [ivy.mm.dim.sales_master];',con)
 
