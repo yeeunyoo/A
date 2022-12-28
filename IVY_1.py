@@ -57,7 +57,7 @@ connection = pyodbc.connect(
     sslmode=True,
 )
 cursor = connection.cursor()
-cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text asce")
+cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
 rows = cursor.fetchall()
 
 # %%
