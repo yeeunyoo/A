@@ -47,26 +47,15 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-@st.experimental_singleton
-def init_connection():
-    return pyodbc.connect(
-        "DRIVER={ODBC Driver 17 for SQL Server};SERVER="
-        + st.secrets["server"]
-        + ";DATABASE="
-        + st.secrets["database"]
-        + ";UID="
-        + st.secrets["username"]
-        + ";PWD="
-        + st.secrets["password"]
-    )
-conn = init_connection()
-@st.experimental_memo(ttl=600)
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-        return cur.fetchall()
+conn = pyodbc.connect(
+r'DRIVER={ODBC Driver 17 for SQL Server};'
+r'SERVER=10.1.3.25;'
+r'DATABASE=KIRA;'
+r'UID=kiradba;'
+r'PWD=Kiss!234!'
+)
 
-rows = run_query("SELECT * from [ivy.mm.dim.sales_master];")
+
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
 with colE:
