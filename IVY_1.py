@@ -49,9 +49,9 @@ st.write("if you have any question, please contact IVY SOM team")
 
 user = st.secrets['username']
 pw = st.secrets['password']
-host = "HQ4601YEAEUNYOO"
+
 db = st.secrets['database']
-engine = create_engine("mysql+pymysql://user:pw@host/db", pool_pre_ping=True)
+engine = create_engine("mysql+pymysql://kiradba:Kiss!234!@10.1.3.25/KIRA", pool_pre_ping=True)
 conn = engine.connect()
 conn.execute("SELECT * distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending;")
 @st.experimental_memo(ttl=600)
