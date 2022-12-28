@@ -53,8 +53,8 @@ username = st.secrets['username']
 password = st.secrets['password']
 import pandas as pd
 import pyodbc 
-cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};Server=10.1.3.25;UID=kiradba;PWD=Kiss!234!;Database=KIRA;")
-df = pd.read_sql_query('select  * from [ivy.mm.dim.sales_master]', cnxn)
+connection = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=10.1.3.25;DATABASE=KIRA;UID=kiradba;PWD=Kiss!234!", autocommit=True)
+df = pd.read_sql_query('select  * from [ivy.mm.dim.sales_master]',connection)
 df.head()
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
