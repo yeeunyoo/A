@@ -46,16 +46,16 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-import pytds
-with pytds.connect('10.1.3.25', 'KIRA', 'kiradba', 'Kiss!234!') as conn:
-    with conn.cursor() as cur:
-        cur.execute("select * from [ivy.mm.dim.sales_master]")
-        df=cur.fetchall()
+
 server = st.secrets['server']
 database = st.secrets['database']
 username = st.secrets['username']
 password = st.secrets['password']
-
+import pandas as pd
+import pyodbc 
+cnxn = pyodbc.connect("Driver={SQL Server};Server=10.1.3.25;UID=kiradba;PWD=Kiss!234!;Database=KIRA;")
+df = pd.read_sql_query('select  * from [ivy.mm.dim.sales_master]', cnxn)
+df.head()
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
 with colE:
