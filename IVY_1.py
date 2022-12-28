@@ -50,7 +50,7 @@ st.write("if you have any question, please contact IVY SOM team")
 server = '10.1.3.25' # to specify an alternate port
 database = KIRA
 username = kiradba 
-password = Kiss!234! 
+password = "Kiss!234!"
 cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
 cursor = cnxn.cursor()
 cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
