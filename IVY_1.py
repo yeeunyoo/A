@@ -52,13 +52,13 @@ password = st.secrets['password']
 connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
 connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
 engine = create_engine(connection_url)
-connection = engine.connect()
-with connection as con:
+
+
 # %% SalesTeam option 
-    df=pd.read_sql('''
-    select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]]
-    order by salesteam_text asc
-    ''', con)
+df=pd.read_sql('''
+ select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]]
+ order by salesteam_text asc
+ ''', con = engine)
 
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
