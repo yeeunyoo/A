@@ -53,7 +53,10 @@ username = st.secrets['username']
 password = st.secrets['password']
 e = create_engine("mssql+pyodbc://kiradba:Kiss!234!@10.1.3.25:1433/test?driver=ODBC+Driver+13+for+SQL+Server&Connect+Timeout=30")
 print(e.dialect.create_connect_args(e.url))
-
+conn = e.connect()
+with e.connect() as connection:
+    connection.execute("select * from [ivy.mm.dim.sales_master]")
+    df=connection.commit()  # commits "some statement"
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
 with colE:
