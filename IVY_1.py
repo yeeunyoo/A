@@ -60,9 +60,13 @@ def init_connection():
         + st.secrets["password"]
     )
 conn = init_connection()
-# %% SalesTeam option 
+@st.experimental_memo(ttl=600)
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        return cur.fetchall()
 
-
+rows = run_query("SELECT * from [ivy.mm.dim.sales_master];")
 # %%
 colA,colB, colC , coldD, colE= st.columns([3,3,3,2,2])
 with colE:
