@@ -48,14 +48,7 @@ st.write("if you have any question, please contact IVY SOM team")
 # %%
 
 # %% SalesTeam option 
-connection = pyodbc.connect(
-    driver="ODBC Driver 17 for SQL Server",
-    server=st.secrets['server'],
-    database=st.secrets['database'],
-    uid=st.secrets['username'],
-    pwd=st.secrets['password'],
-    sslmode=True,
-)
+connection = pyodbc.connect(driver="ODBC Driver 17 for SQL Server",server=st.secrets['server'],database=st.secrets['database'],uid=st.secrets['username'],pwd=st.secrets['password'],sslmode=True,)
 cursor = connection.cursor()
 cursor.execute("select distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending")
 rows = cursor.fetchall()
