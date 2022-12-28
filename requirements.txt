@@ -7,7 +7,7 @@ ConfigParser==5.3.0
 HTMLParser==0.0.2
 
 
-
+streamlit-aggrid
 
 numpy==1.23.5
 openpyxl==3.0.10
