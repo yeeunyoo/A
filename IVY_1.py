@@ -47,13 +47,16 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-server = st.secrets['server']
-database = st.secrets['database']
-username = st.secrets['username']
-password = st.secrets['password']
+server = "DWPRO"
+database = "KIRA"
+username = "kiradba"
+password = "Kiss!234!"
 import pandas as pd
 import pyodbc 
-connection = pyodbc.connect("DRIVER={ODBC Driver 17 for SQL Server};SERVER=10.1.3.25;DATABASE=KIRA;UID=kiradba;PWD=Kiss!234!", autocommit=True)
+connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
+connection_url = URL.create("mssql+pyodbc", query={"odbc_connect": connection_string})
+engine = create_engine(connection_url)
+connection = engine.connect()
 df = pd.read_sql_query('select  * from [ivy.mm.dim.sales_master]',connection)
 df.head()
 # %%
