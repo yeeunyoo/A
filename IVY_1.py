@@ -11,7 +11,7 @@ from sqlalchemy.engine import URL
 from streamlit_autorefresh import st_autorefresh
 from sqlalchemy.sql import text
 from sqlalchemy import *
-
+import sqlalchemy as sal
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from st_aggrid import AgGrid
@@ -46,12 +46,8 @@ st.set_page_config(layout="wide", page_title = 'IVY_1',initial_sidebar_state="co
 st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-weight: bold; '>Salesman Account Change<br> Request Form 1</br></p>",unsafe_allow_html=True)
 st.write("if you have any question, please contact IVY SOM team")
 # %%
-
-user = st.secrets['username']
-pw = st.secrets['password']
-
-db = st.secrets['database']
-engine = create_engine("mysql+pymysql://kiradba:Kiss!234!@169.254.146.68/KIRA", pool_pre_ping=True)
+engine = sal.create_engine('mssql+pyodbc://10.1.3.25/KIRA?driver=SQL Server?Trusted_Connection=yes')
+sal.create_engine('dialect+driver://kiradba:Kiss!234!@host:1433/database')
 conn = engine.connect()
 conn.execute("SELECT * distinct(salesteam_text) from [[dbo]].[TEMPORARY]]] order by salesteam_text ascending;")
 @st.experimental_memo(ttl=600)
