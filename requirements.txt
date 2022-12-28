@@ -8,7 +8,7 @@ deta==1.1.0
 dl==0.1.0
 docutils==0.19
 HTMLParser==0.0.2
-
+pymysql
 pillow
 streamlit-aggrid
 numpy==1.23.5
