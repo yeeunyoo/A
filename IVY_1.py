@@ -46,7 +46,7 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-server = "DWPRO"
+server = "localhost"
 database = "KIRA"
 username = "kiradba"
 password = "Kiss!234!"
