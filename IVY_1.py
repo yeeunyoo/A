@@ -46,10 +46,10 @@ st.markdown("<p style='text-align: center; color:#1428A0; font-size:40px; font-w
 st.write("if you have any question, please contact IVY SOM team")
 # %%
 
-server = "localhost"
-database = "KIRA"
-username = "kiradba"
-password = "Kiss!234!"
+server = st.secrets['server']
+database = st.secrets['database']
+username = st.secrets['username']
+password = st.secrets['password']
 import pandas as pd
 import pyodbc 
 connection_string = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password
